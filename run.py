@@ -14,7 +14,7 @@ def deposit():
     else:
         return amount
 
-def withdraw():
+def withdraw(balance):
 
     print('Enter the amount you would like to withdraw:')
     amount = float(input('>> '))
@@ -29,36 +29,40 @@ def withdraw():
         return amount
 
 
-def show_balance():
+def show_balance(balance):
     print(f'Your current balance is €{balance:.2f}')
 
 
-balance = 0
-is_running = True
+def main():
+
+    balance = 0
+    is_running = True
 
 
-while is_running:
-    print('Welcome to The Bank!')
-    print('[1] Deposit')
-    print('[2] Withdraw')
-    print('[3] Show balance')
-    print('[4] Exit')
+    while is_running:
+        print('Welcome to The Bank!')
+        print('[1] Deposit')
+        print('[2] Withdraw')
+        print('[3] Show balance')
+        print('[4] Exit')
 
-    print('Please enter your choice (1-4):')
-    choice = int(input('>> '))
+        print('Please enter your choice (1-4):')
+        choice = int(input('>> '))
 
-    if choice == 1:
-        balance += deposit()
-        print(f'Thank you for your deposit! Your new balance is €{balance:.2f}')
-    elif choice == 2:
-        balance -= withdraw()
-        print(f'Thank you for your withdrawal! Your new balance is €{balance:.2f}')
-    elif choice == 3:
-        show_balance()
-    elif choice == 4:
-        is_running = False
-    else:
-        print('That is not a valid choice!')
+        if choice == 1:
+            balance += deposit()
+            print(f'Thank you for your deposit! Your new balance is €{balance:.2f}')
+        elif choice == 2:
+            balance -= withdraw(balance)
+            print(f'Thank you for your withdrawal! Your new balance is €{balance:.2f}')
+        elif choice == 3:
+            show_balance(balance)
+        elif choice == 4:
+            is_running = False
+        else:
+            print('That is not a valid choice!')
+
+    print('Thank you! Have a nice day!')
 
 
-print('Thank you! Have a nice day!')
+main()
